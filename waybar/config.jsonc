@@ -1,0 +1,53 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 32,
+    "spacing": 4,
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["network", "bluetooth", "pulseaudio", "custom/power_profile", "battery"],
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate"
+    },
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%d.%m.%Y}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    },
+    "network": {
+        "format-wifi": "",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰤮",
+        "on-click": "nm-connection-editor",
+        "tooltip-format": "{essid} ({signalStrength}%)"
+    },
+    "bluetooth": {
+        "format": "",
+        "format-connected": "",
+        "format-disabled": "", 
+        "on-click": "blueman-manager",
+        "tooltip-format": "{status}"
+    },
+    "pulseaudio": {
+        "format": "{icon}",
+        "format-muted": "",
+        "format-icons": { "default": ["", "", ""] },
+        "on-click": "pavucontrol",
+        "tooltip-format": "{volume}%"
+    },
+    "battery": {
+        "states": { "warning": 30, "critical": 15 },
+        "format": "{icon}",
+        "tooltip-format": "{capacity}%\n{time}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "custom/power_profile": {
+        "exec": "powerprofilesctl get | sed 's/performance//;s/balanced//;s/power-saver//'",
+        "interval": 2,
+        "on-click": "current=$(powerprofilesctl get); if [ \"$current\" = \"performance\" ]; then powerprofilesctl set balanced; elif [ \"$current\" = \"balanced\" ]; then powerprofilesctl set power-saver; else powerprofilesctl set performance; fi",
+        "tooltip": true,
+        "tooltip-format": "Performance -> Balanced -> Power Saver"
+    }
+}
