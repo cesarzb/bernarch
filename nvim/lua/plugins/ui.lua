@@ -1,10 +1,10 @@
 return {
-  {
-    "olrtg/nvim-emmet",
-    config = function()
-      vim.keymap.set({ "n", "v" }, "<leader>xe", function()
-        require("nvim-emmet").wrap_with_tag()
-      end, { desc = "Emmet: Wrap with tag" })
-    end,
-  },
+	{
+		"olrtg/nvim-emmet",
+		config = function()
+			vim.keymap.set({ "n", "v" }, "<leader>xe", function()
+				require("nvim-emmet").wrap_with_tag()
+			end, { desc = "Emmet: Wrap with tag" })
+		end,
+	},
 }
