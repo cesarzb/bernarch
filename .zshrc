@@ -12,3 +12,7 @@ SAVEHIST=10000
 setopt appendhistory
 alias nest="npx nest"
 export EDITOR=nvim
+eval "$(mise activate zsh)"
+eval "$(fnm env --use-on-cd)"
+. "/home/cesarzb/.deno/env"
+alias focus="bash ~/Environment/focus_tracker_setup.sh"
